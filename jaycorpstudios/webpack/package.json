@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:dev": "webpack --mode development; serve",
-    "build:prod": "webpack"
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack",
+    "serve": "serve"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
