@@ -19,10 +19,10 @@ gulp.task('default', function () {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('./sass/**/*.scss', ['styles']);
-    gulp.watch('./source/js/**/*.js', ['scripts']);
+    gulp.watch('./es6/**/*.js', ['scripts']);
 });
 
-gulp.task('styles', ['cleanCSS'], function () {
+gulp.task('styles', ['clean'], function () {
     gulp.src('./sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
@@ -34,11 +34,12 @@ gulp.task('styles', ['cleanCSS'], function () {
         .pipe(livereload());
 });
 
-gulp.task('scripts', ['cleanJS'], function () {
-    gulp.src('./source/js/**/*.js')
+gulp.task('scripts', ['clean'], function () {
+    gulp.src('./es6/**/*.js')
         .pipe(babel({
             presets: ['@babel/env']
         }))
+        .pipe(gulp.dest('./source/js'))
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/js'))
@@ -46,10 +47,7 @@ gulp.task('scripts', ['cleanJS'], function () {
         .pipe(livereload());
 });
 
-gulp.task('cleanCSS', function () {
-    fs.removeSync('./dist/css');
-});
-
-gulp.task('cleanJS', function () {
-    fs.removeSync('./dist/js');
+gulp.task('clean', function () {
+    fs.removeSync('./dist');
+    fs.removeSync('./source');
 });
