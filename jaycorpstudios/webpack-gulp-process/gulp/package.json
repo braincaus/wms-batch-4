@@ -1,0 +1,16 @@
+{
+  "name": "gulp-process",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "ENVIRONMENT=Development gulp",
+    "dist": "ENVIRONMENT=Production gulp dist"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-template": "^5.0.0"
+  }
+}
