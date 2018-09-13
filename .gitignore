@@ -62,3 +62,6 @@ typings/
 
 # JetBrains Suite
 .idea/
+
+# Transforms and bundlers
+dist/
