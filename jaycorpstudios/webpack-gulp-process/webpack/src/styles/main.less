@@ -1,0 +1,25 @@
+@font-face{
+    font-family: 'Raleway-Regular';
+    src: url(./../fonts/Raleway-Regular.ttf);
+}
+
+body{
+    font-family: 'Raleway-Regular';
+}
+
+.component {
+    @background-color: rgb(10,10,10);
+    background: @background-color;
+    &__title{
+        color: white;
+    }
+    &__content{
+        color: rgb(253, 251, 145);
+    }
+    &--highlight{
+        background: orange;
+    }
+    &__images{
+        background-image: url('./../images/cats-1.png');
+    }
+}
