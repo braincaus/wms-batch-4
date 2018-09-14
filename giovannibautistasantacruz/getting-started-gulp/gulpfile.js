@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     fs = require('fs-extra'),
     babel = require("gulp-babel"),
     chalk = require('chalk');
+    pug = require('gulp-pug');
 
 gulp.task('default', function () {
     
@@ -19,36 +20,11 @@ gulp.task('default', function () {
     gulp.start('styles',"scripts");
 });
 
-gulp.task('watch', function () {
-    livereload.listen();
-    gulp.watch('./src/**/*.scss', ['styles']);
-    gulp.watch('./src/**/*.js', ['scripts']);
-});
-
-gulp.task('styles', ['clean'], function () {
-    gulp.src('./sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer())
-        .pipe(gulp.dest('./source/css'))
-        .pipe(minifyCSS())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./dist/css'))
-        .pipe(notify({message: 'CSS - task completed'}))
-        .pipe(livereload());
-});
-
-gulp.task('scripts', ['clean'], function () {
-    gulp.src('./es6/**/*.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(gulp.dest('./source/js'))
-        .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./dist/js'))
-        .pipe(notify({message: 'JS - task completed'}))
-        .pipe(livereload());
-});
+gulp.task('buildPug', function build() {
+    return gulp.src('src/**.pug')
+      .pipe(pug(options))
+      .pipe(gulp.dest('index.html'));
+  });
 
 gulp.task('clean', function () {
     fs.removeSync('./dist');
