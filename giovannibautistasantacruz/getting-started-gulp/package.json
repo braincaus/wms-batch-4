@@ -20,5 +20,17 @@
   "bugs": {
     "url": "https://github.com/giovannibautistasantacruz/wms-batch-4/issues"
   },
-  "homepage": "https://github.com/giovannibautistasantacruz/wms-batch-4#readme"
+  "homepage": "https://github.com/giovannibautistasantacruz/wms-batch-4#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-livereload": "^4.0.0",
+    "gulp-minify": "^3.1.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0"
+  }
 }
