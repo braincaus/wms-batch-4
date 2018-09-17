@@ -1,0 +1,13 @@
+{
+  "name": "getting-started-gulp-images",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "gulp"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-image-resize": "^0.13.0",
+    "gulp-imagemin": "^4.1.0"
+  }
+}

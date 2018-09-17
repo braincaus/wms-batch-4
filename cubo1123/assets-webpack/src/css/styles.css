@@ -1,0 +1,16 @@
+@font-face { 
+    font-family: NotoSerif;
+    src: url('../fonts/NotoSerif.otf');
+}
+p { 
+    font-family: NotoSerif;
+
+    }
+
+body{
+    background: lightslategray;
+}
+
+img {
+    content: url("../images/fairy.jpg")
+}
