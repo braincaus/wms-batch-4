@@ -1,0 +1,16 @@
+$color: #222;
+$colp: white;
+$ht: red;
+
+body {
+    background: $color;
+    display: flex;
+}
+
+h1 {
+    color: $ht;
+}
+
+p {
+    color: $colp;
+}

@@ -1,0 +1,15 @@
+/* line 5, src/index.scss */
+body {
+  background: #222;
+  display: flex;
+}
+
+/* line 10, src/index.scss */
+h1 {
+  color: red;
+}
+
+/* line 14, src/index.scss */
+p {
+  color: white;
+}
