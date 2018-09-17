@@ -1,0 +1,31 @@
+{
+  "name": "assets-gulp",
+  "version": "0.0.1",
+  "description": "assets-gulp",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-image-resize": "^0.13.0",
+    "serve": "^10.0.1"
+  },
+  "scripts": {
+    "test": "test",
+    "serve": "./node_modules/.bin/serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "assets-gulp",
+    "curso",
+    "centraal"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4#readme"
+}
