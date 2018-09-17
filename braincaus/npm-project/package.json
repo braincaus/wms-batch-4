@@ -1,0 +1,36 @@
+{
+  "name": "npm-project",
+  "version": "0.0.1",
+  "description": "npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build:dev": "./node_modules/.bin/babel app.js --out-file app.buil.dev.js",
+    "build:production": "",
+    "serve": "./node_modules/.bin/serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "serve": "^10.0.1"
+  },
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  }
+}
