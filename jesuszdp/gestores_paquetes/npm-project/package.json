@@ -1,0 +1,49 @@
+{
+  "name": "npm-project",
+  "version": "0.0.0",
+  "description": "Práctica gestores de paquetes",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build:dev": "gulp dev",
+    "build:production": "gulp production",
+    "serve": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "web-mobile-specialist",
+    "dependencies"
+  ],
+  "author": "Jesús Díaz jesusz.unam@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "fs-extra": "^7.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-livereload": "^4.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "serve": "^10.0.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "express": "^4.16.3",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "y": "^0.3.2"
+  }
+}
