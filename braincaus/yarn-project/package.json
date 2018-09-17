@@ -1,0 +1,24 @@
+{
+  "name": "yarn-project",
+  "version": "0.0.1",
+  "description": "yarn",
+  "main": "index.js",
+  "repository": "https://github.com/Centraal-Academy/wms-batch-4",
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "serve": "^10.0.1"
+  },
+  "dependencies": {
+    "react-dom": "^16.5.1"
+  },
+  "scripts": {
+    "build:dev": "./node_modules/.bin/babel app.js --out-file app.buil.dev.js",
+    "build:production": "",
+    "serve": "./node_modules/.bin/serve"
+  }
+}
