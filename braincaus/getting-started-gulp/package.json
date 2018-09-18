@@ -1,0 +1,31 @@
+{
+  "name": "getting-started-gulp",
+  "version": "0.0.1",
+  "description": "getting-started-gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "./node_modules/.bin/gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "getting-started-gulp",
+    "gulp",
+    "curso",
+    "centraal"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}
