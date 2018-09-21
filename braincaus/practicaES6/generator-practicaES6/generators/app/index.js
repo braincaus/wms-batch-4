@@ -54,7 +54,7 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copyTpl(
       this.templatePath('index.html'),
-      this.destinationPath('src/index.html'),
+      this.destinationPath('index.html'),
       {
         title: "PracticaES6"
       }
