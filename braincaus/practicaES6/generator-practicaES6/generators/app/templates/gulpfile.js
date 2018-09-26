@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -12,17 +12,17 @@ var gulp = require('gulp'),
     fs = require('fs-extra'),
     babel = require("gulp-babel");
 
-gulp.task('default', function () {
+gulp.task('default', () => {
     gulp.start('styles', 'scripts');
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
     livereload.listen();
     gulp.watch('./src/**/*.scss', ['styles']);
     gulp.watch('./src/**/*.js', ['scripts']);
 });
 
-gulp.task('styles', ['clean'], function () {
+gulp.task('styles', ['clean'], () => {
     gulp.src('./src/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
@@ -34,7 +34,7 @@ gulp.task('styles', ['clean'], function () {
         .pipe(livereload());
 });
 
-gulp.task('scripts', ['clean'], function () {
+gulp.task('scripts', ['clean'], () => {
     gulp.src('./src/**/*.js')
         .pipe(babel({
             presets: ['@babel/env']
@@ -47,7 +47,7 @@ gulp.task('scripts', ['clean'], function () {
         .pipe(livereload());
 });
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
     fs.removeSync('./dist');
     fs.removeSync('./source');
 });

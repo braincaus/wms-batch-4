@@ -4,7 +4,7 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send(
       {
           "data": "esto es genial!!!"
@@ -12,6 +12,6 @@ app.get('/', function (req, res) {
     );
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
 });
