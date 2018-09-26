@@ -1,0 +1,32 @@
+{
+  "name": "generator-practicaes6",
+  "version": "0.0.1",
+  "description": "generator-practicaes6",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "files": [
+    "generators"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "practicaES6",
+    "yo",
+    "yeoman",
+    "curso",
+    "Centraal"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4#readme",
+  "dependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}

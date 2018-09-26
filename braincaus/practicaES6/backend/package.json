@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centraal-Academy/wms-batch-4.git"
+  },
+  "keywords": [
+    "practicaES6",
+    "backend",
+    "expressjs"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Centraal-Academy/wms-batch-4/issues"
+  },
+  "homepage": "https://github.com/Centraal-Academy/wms-batch-4#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  }
+}
