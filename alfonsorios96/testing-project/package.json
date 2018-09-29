@@ -7,14 +7,21 @@
     "test": "gulp && nyc mocha ./dist/test/**/*.spec.js",
     "build": "gulp"
   },
+  "nyc": {
+    "exclude": [
+      "dist/test/**/*.spec.js"
+    ]
+  },
   "author": "Alfonso Rios <malforime@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "axios": "^0.18.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1"
+    "nyc": "^13.0.1",
+    "sinon": "^6.3.4"
   }
 }

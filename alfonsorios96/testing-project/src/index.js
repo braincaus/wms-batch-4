@@ -1,5 +1,7 @@
 'use strict';
 
+import * as axios from 'axios';
+
 const formatNumber = (amount, format = 'small') => {
     if (typeof amount !== 'number') {
         return '$0';
@@ -41,5 +43,17 @@ const addComma = (number) => {
     return stringFormatted;
 };
 
+const myRest = (url, callback) => {
+    return axios.get(url)
+        .then(response => {
+            // console.log(response.data);
+            // console.log(response.data.explanation);
+            callback();
+        })
+        .catch(error => {
+            // console.log(error);
+        });
+};
 
-export {formatNumber};
+
+export {formatNumber, myRest, axios};
