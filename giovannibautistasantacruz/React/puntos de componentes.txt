@@ -1,0 +1,11 @@
+# REACT APP
+-El index es elun template
+-Manifest contiene configuraciones de vista
+-Appes un componente con codigo enbebidoun css general
+-APP.css es 
+
+# REPOSITORIO
+-SE AGREGA AL OBJETO WINDOW.CUSTOMELEMENTS
+se puede descargar mas de un paquete a la ves
+-se puede embeber contenido en su declaracion de elementos dell SD
+-define  se utiliza para declarar la etiqueta
