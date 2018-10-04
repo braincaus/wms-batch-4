@@ -1,0 +1,66 @@
+<template>
+    <slot></slot>
+</template>
+
+<script>
+    'use strict';
+
+    class DomIF extends HTMLElement {
+        constructor() {
+            super();
+            this._templatize();
+        }
+
+        get if() {
+            let functionName = this.getAttribute('if');
+            functionName = functionName.replace('()', '');
+            if (this.indexOf(functionName) !== -1) {
+                return this[functionName].call(this);
+            } else {
+                return eval(functionName);
+            }
+        }
+
+        set if(newValue) {
+            this.setAttribute('if', JSON.stringify(newValue));
+        }
+
+        static get observedAttributes() {
+            return ['if'];
+        }
+
+        myFunction() {
+            return false;
+        }
+
+        _templatize() {
+            const shadowRoot = this.attachShadow({mode: 'open'});
+            const template = document.currentScript.ownerDocument.querySelector('template');
+            const templateContent = document.importNode(template.content, true);
+            shadowRoot.appendChild(templateContent);
+            const slot = this.shadowRoot.querySelector('slot');
+            const nodes = slot.assignedNodes();
+            this._render(nodes);
+        }
+
+        _render(nodes) {
+            for (const node of nodes) {
+                if (node.localName === 'template' && this.shadowRoot) {
+                    const htmlTemplate = node.innerHTML;
+                    if (this.if) {
+                        this.shadowRoot.innerHTML = htmlTemplate;
+                    } else {
+                        this.shadowRoot.innerHTML = '';
+                    }
+                    this.dispatchEvent(new CustomEvent('dom-changed', {
+                        bubbles: true,
+                        composed: true
+                    }));
+                    break;
+                }
+            }
+        }
+    }
+
+    window.customElements.define('dom-if', DomIF);
+</script>
