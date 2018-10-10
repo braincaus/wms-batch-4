@@ -26,3 +26,6 @@ Los eventos se mandan como propiedad : onEventName
 ### Synthetic Event
 Estos son los que se reciben como parámetros en los callbacks de los elementos en que se asigna una función a un evento.
 Estos están definidos de acuerdo a la especificación de la W3C así que no debes de preocuparte por el cross-browser compatibility.
+
+### Eventos Disponibes
+React incluye eventos de teclado
