@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary-color: #0d3349 ;
+    --secundary-color: #1e9e1e;
+    --header-height: 50px;
+}
+.navbar{
+    background-color: var(--primary-color);
+    height: var(--header-height);
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__links{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.navbar__links__item__a{
+    margin: 0 10px;
+    color: var(--secundary-color);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
