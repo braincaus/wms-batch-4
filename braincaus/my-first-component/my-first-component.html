@@ -1,0 +1,18 @@
+<template>
+    <h1>Hola Mundo!!!</h1>
+</template>
+
+<script>
+    'use strict';
+
+    class MyFirstComponent extends HTMLElement {
+        constructor() {
+            super();
+            let shadowRoot = this.attachShadow({mode: 'open'});
+            const template = document.currentScript.ownerDocument.querySelector('template');
+            shadowRoot.appendChild(template.content);
+        }
+    }
+
+    window.customElements.define('my-first-component', MyFirstComponent);
+</script>
