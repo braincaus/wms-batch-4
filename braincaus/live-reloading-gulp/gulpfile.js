@@ -13,3 +13,15 @@ gulp.task('pug', () => {
         .pipe(pug())
         .pipe(gulp.dest('./dist/html'));
 });
+
+gulp.task('serve', function () {
+
+    // Serve files from the root of this project
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+
+    gulp.watch("./**/*.html").on("change", reload);
+});
