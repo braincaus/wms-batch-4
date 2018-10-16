@@ -29,3 +29,22 @@ Estos están definidos de acuerdo a la especificación de la W3C así que no deb
 
 ### Eventos Disponibes
 React incluye eventos de teclado
+
+## Components
+### Smart
+Se ocupan uniamente de la logica de componente (negocio), pueden contener cualquier tipod de componentes, pero no elemetos visuales.
+
+Provee los datos y el compartamiento a los elementos hijos (smart, dumb)
+
+Proveen callbacks, datos yacciones en el flujo de datos a los dump
+
+### Dump
+Se ocupan de como lucen las cosas
+Pueden contener cualquier tipo de componente y elementos DOM
+Recibe datsos y callbacks exclusivamentes mediante propiedades
+Es rara la ocacion llegan a poseer su propio estado
+Son escritos usando funciones ya que no requieren de ciclo de c¡vida
+
+### Ventajas
+Separacion de propositos (concern)
+Reusabilidad
