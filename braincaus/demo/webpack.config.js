@@ -25,7 +25,11 @@ module.exports = {
         ]
     },
     devServer: {
+        hot: true,
         contentBase: './src',
-        publicPath: '/output'
+        publicPath: '/output',
+        watchOptions: {
+            ignored: /node_modules/
+        }
     }
 };
