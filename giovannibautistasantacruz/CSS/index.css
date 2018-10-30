@@ -1,0 +1,189 @@
+ *{
+    margin: 0;
+    padding: 0;
+    
+}
+
+:root{
+    --secondary-color: #011936;
+    --header-height: 100px;
+    --link-color: #98C1D9;
+    --sidebar: #1ea8df;
+}
+/*
+.navbar{
+    background-color: var(--secondary-color);
+    height: var(--header-height);
+    padding: 0 20px;
+}
+
+.navbar__logo,
+.navbar__links,
+.navbar__button{
+
+    display: inline-block;
+}
+
+.navbar__logo{
+    box-sizing: border-box;
+    width: 30%;
+    margin-top: calc((var(--header-height) - 64px )/2);
+    vertical-align: middle;
+}
+
+.navbar__links{
+    box-sizing: border-box;
+    vertical-align: middle;
+    width: 47%;
+}
+
+.navbar__button{
+    box-sizing: border-box;
+    width: 20%;
+    
+    vertical-align: middle;
+}
+
+.navbar__item{
+
+    display: inline-block;
+}
+
+.navbar__a{
+
+    color: var(--link-color);
+    font-family: arial;
+    text-decoration: none;
+    margin: 0 10px;
+
+} */
+/*flex*/
+.navbar{
+    background-color: var(--secondary-color);
+    height: var(--header-height);
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__item{
+
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+    transition: border 1s; 
+}
+
+
+.navbar__item:hover{
+
+    border-bottom: 1px solid #ffffff;
+    
+}
+
+.navbar__a{
+
+    color: var(--link-color);
+    font-family: arial;
+    text-decoration: none;
+    margin: 0 10px;
+
+}
+
+.navbar__button{
+
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all .4s;
+
+}
+
+
+.navbar__button:hover{
+
+background-color: #ffffff;
+color: var(--secondary-color);
+
+}
+
+
+.navbar__button:focus{
+    outline: none;
+}
+
+
+.navbar__button:active{
+    transform: translateY(1px);
+    animation-name: move;
+    animation-duration: .2s;
+    animation-iteration-count: infinite;
+
+}
+
+
+@keyframes move{
+
+
+    from{
+        transform: translateX(5px);
+    }
+
+    to {
+        transform: translateX(-5px);
+    }
+
+}
+
+
+.sidenav{
+    background-color: var(--sidebar);
+    border-left: 5px solid #5245ed;
+    bottom: 0px;
+    box-sizing: border-box;
+    padding: 40 px 60px;
+    position: fixed;
+    
+    right: -300px;
+    top: 0px;
+
+    width: 300px;
+    transition: right 1s;
+}
+
+.active{
+    right: 0px;
+}
+
+
+
+.mobile{
+    display: none;
+}
+
+.desktop{
+    display: block;
+}
+
+.sidenav__back{
+
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+@media (max-width:450px){
+    .mobile{
+        display: block;
+    }
+    .desktop{
+        display: none;
+    }
+
+
+}
