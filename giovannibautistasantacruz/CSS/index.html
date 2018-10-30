@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header class="navbar">
+
+        <picture class="navbar__logo">
+            <source media="(max-width:450px)" srcset="images/avengers_1.png">
+            <source media="(max-width:650px)" srcset="images/avengers_2.png">
+            
+            <img src="images/avengers.png" alt="Avenger">
+        </picture>
+
+        <nav class="navbar__links desktop">
+                <ul class="navbar__list">
+                        <li class="navbar__item"><a href="" class="navbar__a">Home</a></li>
+                        <li class="navbar__item"><a href="" class="navbar__a">Nosotros</a></li>
+                        <li class="navbar__item"><a href="" class="navbar__a">Contacto</a></li>
+                    </ul>
+        </nav>
+        
+
+        <button class="navbar__button mobile toggle">Menu</button>
+        <button class="navbar__button desktop">Inscribete</button>
+    </header>
+
+    <nav class="sidenav">
+        <button class="sidenav__back toggle">X</button>
+            <ul class="sidenav__list">
+                    <li class="sidenav__item"><a href="" class="sidenav__a">Home</a></li>
+                    <li class="sidenav__item"><a href="" class="sidenav__a">Nosotros</a></li>
+                    <li class="sidenav__item"><a href="" class="sidenav__a">Contacto</a></li>
+            </ul>
+    </nav>
+
+<script>
+'use strict';
+    (function(){
+
+        const toggleButtons = document.querySelectorAll(".toggle");
+        const sidenav = document.querySelector(".sidenav");
+
+        for(let button of toggleButtons){
+
+            button.addEventListener('click',toggleSidenav);
+
+        }
+
+
+        
+
+        function toggleSidenav(){
+
+            sidenav.classList.toggle("active");
+
+        }
+
+    })();
+
+</script>
+
+
+</body>
+</html>
