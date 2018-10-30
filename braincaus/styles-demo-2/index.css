@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    height: 10vh;
+    background-color: #61dafb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+header a{
+    border-bottom: 1px solid black;
+    width: 50%;
+    text-align: center;
+    padding: 40px 0;
+}
+
+header picture {
+    height: inherit;
+    width: 10vh;
+}
+
+header nav{
+    position: fixed;
+    background-color: springgreen;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main{
+    padding-top: 10vh;
+}
+
+section {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+section:nth-child(even) {
+    background-color:blue;
+}
+
+section:nth-child(odd) {
+    background-color:gray;
+}
+
+section h1{
+    color: lightcyan;
+    font-size: 10vh;
+}
+
+section p {
+    font-family: sans-serif;
+    font-size: 35px;
+    height: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

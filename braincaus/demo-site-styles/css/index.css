@@ -1,0 +1,122 @@
+:root{
+    --primary-color: #009688 ;
+    --dark-primary-color: #00796B;
+    --light-primary-color: #B2DFDB;
+    --text-icon-color: #FFFFFF;
+    --accent-color: #FFEB3B;
+    --primary-text: #212121;
+    --secundary-color: #757575;
+    --divider-color: #BDBDBD;
+
+    --header-height: 10em;
+}
+
+header{
+    background-color: var(--primary-color);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header picture{
+    width: var(--header-height);
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+header picture img{
+    width: 100%;
+
+}
+
+header h1{
+    margin: 0;
+}
+
+header ul{
+    display: none;
+}
+
+aside#menu_lateral{
+    background-color: var(--dark-primary-color);
+    position: fixed;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+}
+section#cover{
+    color: var(--text-icon-color);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+section#cover h2{
+    margin: 0;
+}
+
+section#products{
+    margin: 0 1em;
+    padding-top: 3em;
+    display: grid;
+    grid-template-areas: 'first first second third' 'first first fourth fifth';
+}
+
+section#products h2{
+    margin: 0 46%;
+    position: fixed;
+}
+
+section#products article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    color: var(--text-icon-color);
+    background-color: rgba(0,0,0,.3);
+}
+
+section#products article:not(:nth-child(2)) {
+    height: 20em;
+}
+
+section#products article:nth-child(2){
+    grid-area: first
+}
+section#products article:nth-child(3){
+    grid-area: second
+}
+section#products article:nth-child(4){
+    grid-area: third
+}
+section#products article:nth-child(5){
+    grid-area: fourth
+}
+section#products article:nth-child(6){
+    grid-area: fifth
+}
+
+section#products article picture{
+    position: fixed;
+    z-index: -1;
+}
+
+section#products article picture img{
+
+}
+
+section#products article p{
+    max-height: 4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+}
