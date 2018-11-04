@@ -1,0 +1,3 @@
+[submodule "braincaus/redux-blog-exercise"]
+	path = braincaus/redux-blog-exercise
+	url = https://github.com/braincaus/redux-blog-exercise.git
