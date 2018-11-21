@@ -1,3 +1,6 @@
 [submodule "braincaus/redux-blog-exercise"]
 	path = braincaus/redux-blog-exercise
 	url = https://github.com/braincaus/redux-blog-exercise.git
+[submodule "braincaus/design-patterns"]
+	path = braincaus/design-patterns
+	url = https://github.com/braincaus/design-patterns.git
