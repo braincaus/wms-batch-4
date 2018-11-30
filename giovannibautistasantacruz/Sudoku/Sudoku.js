@@ -1,5 +1,5 @@
 let puzzle1 = [
-    [5, 3, 0, 7, 0, 0, 0, 0, 0],
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
     [6, 0, 0, 1, 9, 5, 0, 0, 0],
     [0, 9, 8, 0, 0, 0, 0, 6, 0],
     [8, 0, 0, 0, 6, 0, 0, 0, 3],
@@ -18,19 +18,18 @@ const tomaValor = (puzzle) => {
 
         for (let pz = 0; pz < 9; pz++) {
 
-            let posición = pz;
+            
 
             if (puzzle[i][pz] == 0) {
 
                 let posibleSfila = verificaNumeros(puzzle[i]);
 
-                let columna = integraColumnas(puzzle, posición);
+                let columna = integraColumnas(puzzle, pz);
 
-                console.log(columna);
-
+               
                 let posibleSColumna = verificaNumeros(columna);
 
-                let grid = integraGrid(puzzle, posición, i);
+                let grid = integraGrid(puzzle, pz, i);
 
                 let posibleSgrid = verificaNumeros(grid);
 
@@ -38,7 +37,7 @@ const tomaValor = (puzzle) => {
 
                 if (result.length == 1) {
 
-                    puzzle[i][posición] = result[0];
+                    puzzle[i][pz] = result[0];
 
                     i = -1;
                     break;
@@ -61,87 +60,87 @@ const tomaValor = (puzzle) => {
 };
 
 
-const integraGrid = (puzzle, posición, posicionArreglo) => {
+const integraGrid = (puzzle, posicion, posicionArreglo) => {
 
     let grid = [];
-    let valor = posición + 1;
-    posicionArreglo = posicionArreglo + 1;
-    if (valor < 4) {
+    
+    
+    if (posicion < 3) {
 
-        if (posicionArreglo < 4) {
-            for (let i = 1; i < 4; i++) {
+        if (posicionArreglo < 3) {
+            for (let i = 0; i < 3; i++) {
 
-                grid.push(puzzle[0][i - 1]);
-                grid.push(puzzle[1][i - 1]);
-                grid.push(puzzle[2][i - 1]);
+                grid.push(puzzle[0][i]);
+                grid.push(puzzle[1])[i];
+                grid.push(puzzle[2][i]);
             }
-        } else if (posicionArreglo < 7) {
-            for (let i = 1; i < 4; i++) {
+        } else if (posicionArreglo < 6) {
+            for (let i = 0; i < 3; i++) {
 
-                grid.push(puzzle[3][i - 1]);
-                grid.push(puzzle[4][i - 1]);
-                grid.push(puzzle[5][i - 1]);
+                grid.push(puzzle[3][i]);
+                grid.push(puzzle[4][i]);
+                grid.push(puzzle[5][i]);
             }
-        } else if (posicionArreglo < 10) {
-            for (let i = 1; i < 4; i++) {
+        } else if (posicionArreglo < 9) {
+            for (let i = 0; i < 3; i++) {
 
-                grid.push(puzzle[6][i - 1]);
-                grid.push(puzzle[7][i - 1]);
-                grid.push(puzzle[8][i - 1]);
-            }
-        }
-
-
-
-    } else if (valor < 7) {
-
-        if (posicionArreglo < 4) {
-            for (let i = 4; i < 7; i++) {
-
-                grid.push(puzzle[0][i - 1]);
-                grid.push(puzzle[1][i - 1]);
-                grid.push(puzzle[2][i - 1]);
-            }
-        } else if (posicionArreglo < 7) {
-            for (let i = 4; i < 7; i++) {
-
-                grid.push(puzzle[3][i - 1]);
-                grid.push(puzzle[4][i - 1]);
-                grid.push(puzzle[5][i - 1]);
-            }
-        } else if (posicionArreglo < 10) {
-            for (let i = 4; i < 7; i++) {
-
-                grid.push(puzzle[6][i - 1]);
-                grid.push(puzzle[7][i - 1]);
-                grid.push(puzzle[8][i - 1]);
+                grid.push(puzzle[6][i]);
+                grid.push(puzzle[7][i]);
+                grid.push(puzzle[8][i]);
             }
         }
 
 
 
-    } else if (valor < 10) {
+    } else if (posicion < 6) {
 
-        if (posicionArreglo < 4) {
-            for (let i = 7; i < 10; i++) {
+        if (posicionArreglo < 3) {
+            for (let i = 3; i < 6; i++) {
 
-                grid.push(puzzle[0][i - 1]);
-                grid.push(puzzle[1][i - 1]);
-                grid.push(puzzle[2][i - 1]);
+                grid.push(puzzle[0][i]);
+                grid.push(puzzle[1][i]);
+                grid.push(puzzle[2][i]);
             }
-        } else if (posicionArreglo < 7) {
-            for (let i = 7; i < 10; i++) {
+        } else if (posicionArreglo < 6) {
+            for (let i = 3; i < 6; i++) {
 
-                grid.push(puzzle[3][i - 1]);
-                grid.push(puzzle[4][i - 1]);
-                grid.push(puzzle[5][i - 1]);
+                grid.push(puzzle[3][i]);
+                grid.push(puzzle[4][i]);
+                grid.push(puzzle[5][i]);
             }
-        } else if (posicionArreglo < 10) {
-            for (let i = 7; i < 10; i++) {
+        } else if (posicionArreglo < 9) {
+            for (let i = 3; i < 6; i++) {
 
-                grid.push(puzzle[6][i - 1]);
-                grid.push(puzzle[7][i - 1]);
-                grid.push(puzzle[8][i - 1]);
+                grid.push(puzzle[6][i]);
+                grid.push(puzzle[7][i]);
+                grid.push(puzzle[8][i]);
+            }
+        }
+
+
+
+    } else if (posicion < 9) {
+
+        if (posicionArreglo < 3) {
+            for (let i = 6; i < 9; i++) {
+
+                grid.push(puzzle[0][i]);
+                grid.push(puzzle[1][i]);
+                grid.push(puzzle[2][i]);
+            }
+        } else if (posicionArreglo < 6) {
+            for (let i = 6; i < 9; i++) {
+
+                grid.push(puzzle[3][i]);
+                grid.push(puzzle[4][i]);
+                grid.push(puzzle[5][i]);
+            }
+        } else if (posicionArreglo < 9) {
+            for (let i = 6; i < 9; i++) {
+
+                grid.push(puzzle[6][i]);
+                grid.push(puzzle[7][i]);
+                grid.push(puzzle[8][i]);
             }
         }
 
@@ -165,14 +164,14 @@ const verificaNumeros = (fila) => {
 
 };
 
-const integraColumnas = (puzzle, posición) => {
+const integraColumnas = (puzzle, posicion) => {
 
 
     let columna = [];
 
     for (let i = 0; i < puzzle.length; i++) {
 
-        columna.push(puzzle[i][posición]);
+        columna.push(puzzle[i][posicion]);
 
     }
 
@@ -180,25 +179,19 @@ const integraColumnas = (puzzle, posición) => {
 }
 
 
+const combine =(...arrays)=>{
 
-const multiple = (valor, multiple = 3) => {
-    resto = valor % multiple;
-    if (resto == 0)
-        return true;
-    else
-        return false;
+    let result=[];
+
+    for (const array of arrays){
+        result = result.length === 0 ? array : result.filter(number=>{
+            return array.includes(number);
+        })
+    }
+
+    return result;
 }
 
-const comparaArreglo = (arreglo1, arreglo2) => {
-
-    let copia;
-    if (arreglo1.length > arreglo2.length) copia = arreglo1, arreglo1 = arreglo2, arreglo2 = copia; // indexOf to loop over shorter
-    return arreglo2.filter(function(e) {
-        return arreglo1.indexOf(e) > -1;
-    });
-
-
-}
 
 const obtieneResultado = (grid, columna, fila) => {
     console.log('grid');
@@ -215,14 +208,8 @@ const obtieneResultado = (grid, columna, fila) => {
 
 
 
-    let posibleRespuesta = comparaArreglo(grid, columna);
-
-    console.log('posibleRespuesta');
-    console.log(posibleRespuesta);
-
-
-
-    let respuesta = comparaArreglo(posibleRespuesta, fila);
+    
+    let respuesta = combine(grid,columna,fila);
 
     console.log('respuesta');
     console.log(respuesta);
