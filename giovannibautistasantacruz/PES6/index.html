@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nuevo Inbox</title>
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap-4.1.3/bootstrap.css">
+    <link rel="stylesheet" href="./styles/jquery-ui.css">
+    <link rel="stylesheet" href="./styles/Inbox.css">
+
+</head>
+
+<body>
+    <div class="container mt-4 p-3">
+        <div class="card border-secondary mb-3" style="max-width: 100%;">
+            <div class="card-header card bg-dark text-white">Nuevo Push/Inbox</div>
+            <div class="card-body text-secondary">
+
+                <h5>Push</h5>
+
+                <hr>
+
+                <div class="form-group">
+                    <label for="title">Titulo</label>
+                    <input type="text" class="form-control" id="title" placeholder="Titulo">
+                </div>
+
+                <div class="form-group">
+                    <label for="desc">Descripción</label>
+                    <textarea class="form-control" id="desc" rows="3"></textarea>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="isInbox">
+                    <label class="form-check-label" for="isInbox">Contiene Inbox</label>
+                </div>
+
+
+                <div id="inbox">
+
+                    <hr>
+                    <h5>Inbox</h5>
+
+                    <hr>
+                    <div class="form-group">
+                        <label for="titleInbox">Titulo</label>
+                        <input type="text" class="form-control" id="titleInbox" placeholder="Titulo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descIbx">Descripción de Inbox</label>
+                        <textarea class="form-control" id="descIbx" rows="3"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="ibxImg">Imagen Inbox</label>
+                        <input type="file" accept="image/*" class="form-control-file" id="ibxImg">
+                    </div>
+                    <div class="form-group">
+                        <label for="fInicio">Fecha Iinicio</label>
+                        <input type="text" class="form-control datepicker" id="fInicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="fFin">Fecha Fin</label>
+                        <input type="text" class="form-control datepicker" id="fFin">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button id="send" class="btn btn-success">Send</button>
+    </div>
+
+
+    <div class="modalLoad">
+        <!-- Place at bottom of page -->
+    </div>
+
+
+    <!-- Modal Exito -->
+    <div class="modal fade" id="ModalSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="headerModal">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnCloseModal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body">
+                    <p id="resultado"></p>
+                    <div id="copy">
+
+                        <div class="form-group">
+                            <label for="WebHook">WebHook MixPanel</label>
+                            <textarea class="form-control" id="WebHook" readonly></textarea>
+                            <button class='btn btn-default' id="btnWebHook">
+                                copy
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="jsonPush">JSON en Push MixPanel</label>
+                            <textarea class="form-control" id="jsonPush" readonly></textarea>
+                            <button class='btn btn-default' id="btnJsonPush">
+                               copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptarModal">Aceptar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        const config = {
+            apiKey: "AIzaSyDHnHYiqRw_3ZLBa-vssAKHZu-COk-EOH4",
+            authDomain: "thor-d5cd9.firebaseapp.com",
+            databaseURL: "https://thor-inbox-settings.firebaseio.com/",
+            projectId: "thor-d5cd9",
+            storageBucket: "thor-d5cd9.appspot.com",
+            messagingSenderId: "735903738196"
+        };
+        let thor = firebase.initializeApp(config);
+    </script>
+
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./styles/bootstrap-4.1.3/popper.js"></script>
+    <script src="./styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+    <script>
+        $.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: '<Ant',
+            nextText: 'Sig>',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+
+
+        document.getElementById("inbox").classList.toggle("inboxSectionView");
+        document.getElementById("send").addEventListener("click", sendOnclick);
+        document.getElementById("isInbox").addEventListener("click", isInboxChecked);
+        document.getElementById("btnWebHook").addEventListener("click", copyTextWebHook);
+        document.getElementById("btnJsonPush").addEventListener("click", copyTextJSON);
+
+
+        $(function() {
+
+            getProgramsCatalog();
+            $(".datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: Date.now(),
+                dateFormat: 'yy-mm-dd'
+            });
+
+
+
+
+        });
+
+
+        function getProgramsCatalog() {
+
+            // let userId = firebase.auth().currentUser.uid;
+            return thor.database().ref('/Prgrms/').once('value').then(function(snapshot) {
+
+
+                let programas = snapshot.val();
+                let arrayProgramas = Object.values(programas);
+                console.log(programas);
+
+                console.log(Object.values(programas));
+
+                let parametro = location.search.split('=')[1];
+
+                if (parametro == null || parametro == "" || parametro == undefined) {
+
+                    displayModal("error", "Error", "No se encontro el programa especificado.", false);
+
+                    return;
+                }
+
+                console.log(parametro);
+                let isFindProgram = false;
+                for (let programa of arrayProgramas) {
+
+                    if (parametro == programa.ID) {
+
+                        sessionStorage.UrlInbox = programa.PshSrvce
+                        sessionStorage.config = JSON.stringify(programa.Cnfg);
+
+                        isFindProgram = true;
+
+                    }
+                }
+
+                if (isFindProgram == false) {
+                    displayModal("error", "Error", "No se encontro el programa especificado.", false);
+
+                    return;
+                }
+
+            }).catch(function(error) {
+                console.log(error);
+            });;
+
+        }
+
+        function isInboxChecked() {
+            document.getElementById("inbox").classList.toggle("inboxSectionView");
+        }
+
+        function sendOnclick() {
+
+
+            //let dataFile = photoData.getPhotoData(file);
+
+            let isValid = validate();
+            let tituloModal = document.getElementById("exampleModalLabel");
+            let textoModal = document.getElementById("resultado");
+
+            console.log(isValid);
+
+            if (isValid != true) {
+
+                displayModal("warning", "Atención", "Por favor llena todos los campos.", true)
+                return;
+
+            }
+
+            const urlNewPush = sessionStorage.UrlInbox;
+
+            let data = {};
+
+            if (document.getElementById("isInbox").checked == true) {
+
+                let file = document.getElementById('ibxImg').files[0];
+
+                let configStorage = JSON.parse(sessionStorage.config);
+
+                const configPrograma = {
+                    apiKey: configStorage.Ky,
+                    authDomain: configStorage.ThDmn,
+                    databaseURL: configStorage.DtBsRL,
+                    projectId: configStorage.Prjct,
+                    storageBucket: configStorage.StrgBckt,
+                    messagingSenderId: configStorage.MssgngSndr
+                };
+
+                console.log(configPrograma);
+
+                let result = firebase.apps.filter(obj => {
+                    return obj.name_ == "programaSelected"
+                });
+
+                let programaSelected = null;
+
+                if (result[0] == undefined || result[0] == null || result[0] == "") {
+                    programaSelected = firebase.initializeApp(configPrograma, "programaSelected")
+
+                }
+
+
+
+
+
+                let nameInboxImg = 'Inbox/' + Date.now() + file.name;
+
+
+                const storage = programaSelected.storage();
+                const storageRef = storage.ref();
+                let imagesInbRef = storageRef.child(nameInboxImg);
+
+                imagesInbRef.put(file).then(function(snapshot) {
+
+                    storageRef.child(nameInboxImg).getDownloadURL().then(function(url) {
+
+                        let d = new Date();
+
+                        let hour = d.getHours() < 10 ? `0${d.getHours()}` : `${d.getHours()}`;
+                        let minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
+
+                        data = {
+
+                            "push": {
+
+                                "body": document.getElementById("desc").value,
+
+                                "title": document.getElementById("title").value
+                            },
+
+                            "inbox": {
+
+                                "body": document.getElementById("descIbx").value,
+
+                                "image": url,
+
+                                "title": document.getElementById("titleInbox").value,
+
+                                "validity": {
+
+                                    "from": `${document.getElementById("fInicio").value} ${hour}:${minutes}`,
+
+                                    "until": `${document.getElementById("fFin").value} ${hour}:${minutes}`
+
+                                }
+
+                            }
+
+
+
+                        };
+
+                        console.log("if");
+                        console.log(data);
+
+                        servicesConected(urlNewPush, data)
+
+
+                    });
+                });
+
+
+
+
+
+
+            } else {
+
+
+                data = {
+
+                    "push": {
+
+                        "body": document.getElementById("desc").value,
+
+                        "title": document.getElementById("title").value
+                    }
+
+
+
+                };
+
+                console.log("else");
+
+                console.log(data);
+
+                servicesConected(urlNewPush, data)
+            }
+
+
+
+
+
+
+        }
+
+
+
+        function servicesConected(url, data) {
+
+
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+            console.log(JSON.stringify(data));
+            $('body').addClass('loading');
+
+
+
+            fetch(proxyurl + url, {
+                method: 'POST', // or 'PUT'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function(res) {
+
+                //console.log(res);
+
+                if (!res.ok) {
+
+                    displayModal("error", "Error", "Ocurrio un error, por favor contacte a el administrador.", true)
+
+
+                }
+
+                return res.json()
+            }).then(function(response) {
+
+                console.log(response);
+
+                $('body').removeClass('loading');
+
+
+                if (response.success) {
+
+                    let urlWebhook = ``;
+                    let jsonPush = ``;
+
+
+
+                    if (document.getElementById("isInbox").checked == true) {
+                        urlWebhook = `https://us-central1-benetton-desarrollo-440d8.cloudfunctions.net/MixpanelSegmentationCatcher?templateId=${response.key}&webhookType=2`;
+                        jsonPush = `{"id_inbox":"${response.key}"}`;
+                    } else {
+                        urlWebhook = `https://us-central1-benetton-desarrollo-440d8.cloudfunctions.net/MixpanelSegmentationCatcher?templateId=${response.key}&webhookType=1`;
+                        jsonPush = "";
+                    }
+
+
+                    displayModal("success", "Exitoso", "Elemento guardado correctamente", true, urlWebhook, jsonPush);
+
+
+
+                    clear();
+
+
+                } else {
+                    displayModal("error", "Error", "Ocurrio un error, por favor contacte a el administrador.", true)
+                }
+
+
+
+            }).catch(function(err) {
+
+                console.log(err);
+                $('body').removeClass('loading');
+                displayModal("error", "Error", "Ocurrio un error, por favor contacte a el administrador.", true)
+                    // Error :(
+            });
+
+        }
+
+        function clear() {
+            document.getElementById("desc").value = "";
+            document.getElementById("title").value = "";
+            document.getElementById("descIbx").value = "";
+            document.getElementById("titleInbox").value = "";
+            document.getElementById("fInicio").value = "";
+            document.getElementById("fFin").value = "";
+
+            if (document.getElementById("isInbox").checked) {
+
+                isInboxChecked();
+                document.getElementById("isInbox").checked = false;
+            }
+
+            document.getElementById('ibxImg').value = "";
+
+        }
+
+        function validate() {
+
+            let isValid = true;
+
+            let descripcionPush = document.getElementById("desc");
+            let tituloPush = document.getElementById("title");
+            let descripcionInbox = document.getElementById("descIbx");
+            let tituloInbox = document.getElementById("titleInbox");
+            let fechaInicioInbox = document.getElementById("fInicio");
+            let fechaFinInbox = document.getElementById("fFin");
+            let imagenInbox = document.getElementById('ibxImg');
+
+            descripcionPush.classList.remove('error');
+            tituloPush.classList.remove('error');
+            descripcionInbox.classList.remove('error');
+            tituloInbox.classList.remove('error');
+            fechaInicioInbox.classList.remove('error');
+            fechaFinInbox.classList.remove('error');
+            imagenInbox.classList.remove('error');
+
+            if (document.getElementById("isInbox").checked) {
+
+                if (descripcionPush.value == "" || descripcionPush.value == null || descripcionPush.value == undefined) {
+
+                    isValid = false;
+                    descripcionPush.classList.add('error');
+                }
+
+                if (tituloPush.value == "" || tituloPush.value == null || tituloPush.value == undefined) {
+                    isValid = false;
+                    tituloPush.classList.add('error');
+                }
+                if (descripcionInbox.value == "" || descripcionInbox.value == null || descripcionInbox.value == undefined) {
+                    isValid = false;
+                    descripcionInbox.classList.add('error');
+                }
+
+                if (tituloInbox.value == "" || tituloInbox.value == null || tituloInbox.value == undefined) {
+                    isValid = false;
+                    tituloInbox.classList.add('error');
+                }
+                if (fechaInicioInbox.value == "" || fechaInicioInbox.value == null || fechaInicioInbox.value == undefined) {
+                    isValid = false;
+                    fechaInicioInbox.classList.add('error');
+                }
+                if (fechaFinInbox.value == "" || fechaFinInbox.value == null || fechaFinInbox.value == undefined) {
+                    isValid = false;
+                    fechaFinInbox.classList.add('error');
+                }
+                if (imagenInbox.value == "" || imagenInbox.value == null || imagenInbox.value == undefined) {
+                    isValid = false;
+                    imagenInbox.classList.add('error');
+                }
+
+
+            } else {
+                if (descripcionPush.value == "" || descripcionPush.value == null || descripcionPush.value == undefined) {
+
+                    isValid = false;
+                    descripcionPush.classList.add('error');
+                }
+
+                if (tituloPush.value == "" || tituloPush.value == null || tituloPush.value == undefined) {
+                    isValid = false;
+                    tituloPush.classList.add('error');
+                }
+            }
+
+            return isValid;
+
+        }
+
+        function displayModal(tipo, titulo, texto, isclose, url = "", jsonData = "") {
+
+            let tituloModal = document.getElementById("exampleModalLabel");
+            let textoModal = document.getElementById("resultado");
+            let headerModal = document.getElementById("headerModal");
+            let displayDatatoPush = document.getElementById("copy");
+            let webhook = document.getElementById("WebHook");
+            let pushJSON = document.getElementById("jsonPush");
+
+            tituloModal.innerHTML = "";
+            tituloModal.innerHTML = titulo;
+
+
+            textoModal.innerHTML = "";
+            textoModal.innerHTML = texto
+
+
+
+            headerModal.classList.remove('modal-success');
+            headerModal.classList.remove('modal-error');
+            headerModal.classList.remove('modal-warning');
+
+            switch (tipo) {
+                case "success":
+                    headerModal.classList.add('modal-success');
+                    displayDatatoPush.style.display = "block";
+                    webhook.value = url;
+                    pushJSON.value = jsonData;
+                    break;
+                case "error":
+                    headerModal.classList.add('modal-error');
+                    displayDatatoPush.style.display = "none";
+                    break;
+                case "warning":
+                    headerModal.classList.add('modal-warning');
+                    displayDatatoPush.style.display = "none";
+                    break;
+            }
+
+            if (isclose == false) {
+
+                document.getElementById("btnAceptarModal").style.display = "none";
+                document.getElementById("btnCloseModal").style.display = "none";
+            }
+
+            $('#ModalSuccess').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true // added property here
+            });
+
+
+        }
+
+        function copyTextWebHook() {
+
+            let copyT = document.getElementById("WebHook");
+
+            /* Select the text field */
+            copyT.select();
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+        }
+
+        function copyTextJSON() {
+
+            let copyT = document.getElementById("jsonPush");
+
+            /* Select the text field */
+            copyT.select();
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+        }
+    </script>
+
+</body>
+
+</html>
