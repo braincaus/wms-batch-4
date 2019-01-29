@@ -1,0 +1,20 @@
+{
+  "name": "generator-my-react-app",
+  "version": "0.0.1",
+  "description": "generator-my-react-app es el generador para Yeoman que preparare para crear el boilerplate de mi aplicacion del projecto final",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Centraal",
+    "Curso",
+    "MobileExpert",
+    "ReactJS"
+  ],
+  "author": "@braincaus Efrain Rodriguez",
+  "license": "MIT",
+  "devDependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}

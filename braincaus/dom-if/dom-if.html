@@ -1,0 +1,33 @@
+<template>
+    <slot></slot>
+</template>
+
+<script>
+    'use strict';
+
+    // 1.- Se declara clase que extiende de HTMLElement, para crear nuestro elemento
+    class DomIF extends HTMLElement{
+        // 3.- Siempre hay que llamar a nuestro constuctor
+        constructor() {
+            super();
+
+            // 4.- Llamamos a la funcion templatize, la cual es la que se encargara de mostrar nuestro elemento
+            this._templatize();
+        }
+
+        // 4.- Nuestra funcion templatize, se encargara de mostrar nuestro elemeto
+        _templatize() {
+            const shadowRoot = this.attachShadow({mode: 'open'});  // Abre el ShadowDom
+            const template = document.currentScript.ownerDocument.querySelector('template');  // Selecciona el template
+            const templateContent = document.importNode(template.content, true);  // Importa el contenido del template
+            shadowRoot.appendChild(templateContent);  // Añade el contenido del Template al ShadowDOM
+            const slot = this.shadowRoot.querySelector('slot');
+            const nodes = slot.assignedNodes();
+            this._render(nodes);
+        }
+
+    }
+
+    // 2.- Se declara la etiqueta con la que se representara nuestro elemento
+    window.customElements.define('dom-if', DomIF);
+</script>
